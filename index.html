@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<script src="jquery.js"></script>
+		<script src="sorcery.js"></script>
+		<link type="text/css" rel="stylesheet" href="style.css" />
+		<meta lang="fr" xml:lang="fr" content="text/html;charset=UTF-8" http-equiv="Content-Type">
+		<meta charset="utf-8">
+		<title>Thief</title>
+	</head>
+		
+	<body>
+		<div id="status">
+			<div class="life">
+				Life : <span class="value">--</span>
+			</div>
+		</div>
+	
+		<div class="section" id="intro">
+			<h2>THIEF</h2>
+			Voler c'est pas bien.
+			
+			<action name="reset"/>
+			
+			<button go="manoir">Commencer l'aventure !</button>
+		</div>
+	
+		
+		<div class="section" id="manoir">
+			Vous voilà devant le manoir Razenfield, il est temps de devenir riche.
+			
+			<action name="start"/>
+			
+			<button go="openedDoor">Crocheter l'entrée</button>
+			<!-- <button go="#">Escalader le grillage</button> -->
+			<!-- <button go="#">Sauter sur le toit</button> -->
+		</div>
+	
+		
+		<div class="section" id="openedDoor">
+			Vous cassez vos outils mais la porte s'ouvre sur une grande allée éclairée.
+			
+			<button go="alley">Remonter l'allée.</button>
+			<!-- <button go="#">Passer par le jardin.</button> -->
+		</div>
+	
+		
+		<div class="section" id="alley">
+			Vous voilà devant la grande batisse transpirant l'argent.
+		
+			<button go="threeChoices">Entrer par la porte.</button>
+			<!-- <button go="#">Entrer par la fenêtre.</button> -->
+		</div>
+	
+		
+		<div class="section" id="threeChoices">
+			La porte n'étant pas fermée à clé, elle s'ouvre facilement sur un hall donnant l'accès à un escalier et deux portes.
+
+			<!-- <button go="#">Passer la porte de gauche.</button> -->
+			<button go="fourDoors">Monter l'escalier.</button>
+			<button go="diningRoom">Passer la porte de droite.</button>
+		</div>
+	
+		
+		<div class="section" id="fourDoors">
+			<p>Arrivé en haut vous faites face a quatre portes dont seulement une n'a pas l'air éclairée de l'intérieur.</p>
+			
+			<button go="teenageRoom">Ouvrir la porte de gauche avec un poster de tête de mort.</button>
+			<button go="parentRoom">Ouvrir la deuxième porte a gauche non éclairée.</button>
+			<button go="#">Ouvrir la porte a droite largement éclairée.</button>
+			<button go="#">Ouvrir la deuxième porte a droite assez usé.</button>
+			<button go="threeChoices">Redescendre l'escalier.</button>
+		</div>
+		
+		
+		<div class="section" id="teenageRoom">
+			C'est une chambre d'ado pleine de poster et bien sale. Le propriétaire est d'ailleurs dos a vous sur son ordinateur. Une musique extrêmement forte sortant de son casque.
+			<button go="">Fouiller la chambre.</button>
+			<!-- Si alerte<2 : go tabletCat -->
+			<!-- Si alerte>=2 : go tablet -->
+			<button go="fourDoors">Sortir.</button>
+		</div>
+		
+		
+		<div class="section" id="tabletCat">
+			Vous apercevez seulement une tablette sur le lit. Mais aussi un chat endormi juste à coté.
+			
+			<button go="takeTabletCat">Tenter de prendre la tablette.</button>
+			<button go="fourDoors">Sortir.</button>
+		</div>
+		
+		
+		<div class="section" id="takeTabletCat">
+			Lorsque vous approchez le chat s'excite et vous saute dessus pour vous griffer avant de sortir précipitamment. Heureusement l'ado n'a rien entendu. Vous prenez la tablette et sortez de la pièce.
+			<!-- Vie -1, Alerte +1 Retour au 3/ -->
+			<button go="fourDoors">Sortir.</button>
+		</div>
+		
+		
+		<div class="section" id="tablet">
+			Vous apercevez seulement une tablette sur le lit.
+			<button go="takeTablet">Prendre la tablette</button>
+			<button go="fourDoors">Sortir.</button>
+		</div>
+
+
+		<div class="section" id="takeTablet">
+			Vous la récupérez sans difficulté. Vous sortez de la pièce.
+			<button go="fourDoors">Sortir.</button>
+		</div>
+
+
+		<div class="section" id="parentRoom">
+			C'est la chambre parentale, une personne dors dans le lit. Vous apercevez un collier onéreux sur une commode près de la porte.
+			<button go="searchParentRoom">Trop évident, fouiller la pièce.</button>
+			<button go="takeNecklace">Prendre le collier.</button>
+			<button go="fourDoors">Sortir.</button>
+		</div>
+
+
+		<div class="section" id="searchParentRoom">
+			Le reste de la pièce contient une armoire et des tables de chevet des deux cotés du lit.
+			<button go="searchNightstand">Fouiller une table de chevet.</button>
+			<button go="openWardrobe">Ouvrir l'armoire.</button>
+		</div>
+
+		<!-- si alert=3 -->
+		<div class="section" id="searchNightstand">
+			Le mari dans le lit avait était alerté par vos bruits et maintenant que vous êtes proche il vous frappe avec une batte. Vous perdez connaissance et êtes réveillé par la police. Dommage.
+			<button go="intro">Meh.</button>
+		</div>
+		
+	</body>
+
+</html>
