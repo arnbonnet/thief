@@ -12,7 +12,10 @@
 	<body>
 		<div id="status">
 			<div class="life">
-				Life : <span class="value">--</span>
+				Vie : <span class="lifeValue">--</span>
+			</div>
+			<div class="alert">
+				Alerte : <span class="alertValue">--</span>
 			</div>
 		</div>
 	
@@ -20,14 +23,12 @@
 			<h2>THIEF</h2>
 			Voler c'est pas bien.
 			
-			<action name="reset"/>
-			
 			<button go="manoir">Commencer l'aventure !</button>
 		</div>
 	
 		
 		<div class="section" id="manoir">
-			Vous voilà devant le manoir Razenfield, il est temps de devenir riche.
+			Vous voilà devant le manoir Razenfield, il est temps de devenir riche !
 			
 			<action name="start"/>
 			
@@ -37,7 +38,8 @@
 		</div>
 	
 		<div class="section" id="roof"> 
-			En passant par le toit d'un magasin à coté vous vous lancez sur le toit du manoir. Malheureusement le toit glissant vous fait arriver dans un son lourd et une glissade non maitrisée. Vous voyez une fenêtre à l'étage par laquelle rentrer. -1 vie, +2 alarme
+			En passant par le toit d'un magasin à coté vous vous lancez sur le toit du manoir. Malheureusement le toit glissant vous fait arriver dans un son lourd et une glissade non maitrisée. Vous voyez une fenêtre à l'étage par laquelle rentrer.
+			<p>(-1 vie, +2 alerte)</p>
 			
 			<button go="fourDoors">Entrer</button>
 			<button go="think">Réfléchir</button> <!-- idée : à force de réfléchir on s'endors, puis réveillé par police -->
@@ -64,7 +66,8 @@
 		</div>
 
 		<div class="section" id="garden">
-			Alors que vous commencez à progresser dans le jardin vous ne remarquez pas dans le noir la niche, ni le chien qui se met à vous aboyer dessus. Il est attaché mais vous vous dépêchez d'arriver devant le manoir. +1 alerte
+			Alors que vous commencez à progresser dans le jardin vous ne remarquez pas dans le noir la niche, ni le chien qui se met à vous aboyer dessus. Il est attaché mais vous vous dépêchez d'arriver devant le manoir.
+			<p>(+1 alerte)</p>
 			
 			<button go="hallByFrontDoor">Entrer par la porte.</button>
 			<button go="window">Entrer par la fenêtre.</button>
@@ -78,7 +81,8 @@
 		</div>
 		
 		<div class="section" id="window">
-			Vous ouvrez tant bien que mal la fenêtre mais en passant votre corps vous faites un faux mouvement et tombez à l'intérieur en faisant tomber la fenêtre sur votre jambe. -1 vie, +1 alerte.
+			Vous ouvrez tant bien que mal la fenêtre mais en passant votre corps vous faites un faux mouvement et tombez à l'intérieur en faisant tomber la fenêtre sur votre jambe.
+			<p>(-1 vie, +1 alerte)</p>
 		
 			<button go="kitchen">Observer la pièce.</button>
 		</div>
@@ -98,7 +102,9 @@
 		</div>
 
 		<div class="section" id="eatingCat">
-			Pendant vos fouilles vous troublez le repas du chat qui vous saute dessus pour vous griffer puis pars en courant. -1 vie, +1 alarme
+			Pendant vos fouilles vous troublez le repas du chat qui vous saute dessus pour vous griffer puis pars en courant.
+			<p>(-1 vie, +1 alerte)</p>
+
 			<button go="hallByKitchen">Sortir.</button>
 		</div>
 
@@ -136,7 +142,8 @@
 
 		<div class="section" id="drawerOnFloor">
 			Vous mettez trop de forces pour l'ouvrir ce qui le sort de la commode.<br /> 
-			Son contenu se répand par terre dans un léger bruit (merci le tapis !). Alerte +1
+			Son contenu se répand par terre dans un léger bruit (merci le tapis !).
+			<p>(+1 alerte)</p>
 			<button go="hallByDiningRoom">Prendre le tout et sortir.</button>
 		</div>
 
@@ -178,7 +185,8 @@
 		</div>
 
 		<div class="section" id="failedVault">
-			Vous tirez de toutes vos forces mais rien ne bouge. En mettant trop de force vers l'arrière vous lâchez prise et bousculer les meubles derrière vous, une boite vous tombe dessus. Vous sortez de la pièce. Vie -1, Alerte +1.
+			Vous tirez de toutes vos forces mais rien ne bouge. En mettant trop de force vers l'arrière vous lâchez prise et bousculer les meubles derrière vous, une boite vous tombe dessus. Vous sortez de la pièce.
+			<p>(-1 vie, +1 alerte)</p>
 			<button go="fourDoors">Sortir.</button>
 		</div>
 
@@ -210,7 +218,8 @@
 		
 		
 		<div class="section" id="takeTabletCat">
-			Lorsque vous approchez le chat s'excite et vous saute dessus pour vous griffer avant de sortir précipitamment. Heureusement l'ado n'a rien entendu. Vie -1, Alerte +1
+			Lorsque vous approchez le chat s'excite et vous saute dessus pour vous griffer avant de sortir précipitamment. Heureusement l'ado n'a rien entendu.
+			<p>(-1 vie, +1 alerte)</p>
 			<button go="fourDoors">Prendre la tablette et sortir de la chambre.</button>
 		</div>
 		
@@ -279,7 +288,8 @@
 		</div>
 
 		<div class="section" id="successWardrobe">
-			En y appliquant assez de forces, vous parvenez à l'ouvrir et trouvez 5 bagues en or. Le craquement de l'ouverture émet un bruit. Alerte +1
+			En y appliquant assez de forces, vous parvenez à l'ouvrir et trouvez 5 bagues en or. Le craquement de l'ouverture émet un bruit.
+			<p>(+1 alerte)</p>
 			<button go="searchParentRoom">Continuer à fouiller.</button>
 		</div>
 
@@ -317,6 +327,7 @@
 		<div class="section" id="escaped">
 			La chute vous a un peu sonné mais vous parvenez à partir avec le magot. Bravo.
 			<button go="intro">Recommencer.</button>
+		</div>
 	</body>
 
 </html>
