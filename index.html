@@ -17,6 +17,9 @@
 			<div class="alert">
 				Alerte : <span class="alertValue">--</span>
 			</div>
+			<div class="inventory">
+				Outils : <span class="toolsValue">--</span>
+			</div>
 		</div>
 	
 		<div class="section" id="intro">
@@ -25,28 +28,26 @@
 			
 			<button go="manoir">Commencer l'aventure !</button>
 		</div>
-	
 		
 		<div class="section" id="manoir">
 			Vous voilà devant le manoir Razenfield, il est temps de devenir riche !
 			
-			<action name="start"/>
-			
-			<button go="openedDoor">Crocheter l'entrée</button>
-			<button go="passedFence">Escalader le grillage</button>
-			<button go="roof">Sauter sur le toit</button>
+			<button class="tools" go="openedDoor">Crocheter l'entrée.</button>
+			<button go="passedFence">Escalader le grillage.</button>
+			<button go="roof">Sauter sur le toit.</button>
 		</div>
 	
 		<div class="section" id="roof"> 
-			En passant par le toit d'un magasin à coté vous vous lancez sur le toit du manoir. Malheureusement le toit glissant vous fait arriver dans un son lourd et une glissade non maitrisée. Vous voyez une fenêtre à l'étage par laquelle rentrer.
+			En passant par le toit d'un magasin à coté, vous vous lancez sur le toit du manoir. Malheureusement le toit glissant vous fait arriver dans un son lourd et une glissade non maitrisée. Vous voyez une fenêtre à l'étage par laquelle rentrer.
 			<p>(-1 vie, +2 alerte)</p>
 			
-			<button go="fourDoors">Entrer</button>
-			<button go="think">Réfléchir</button> <!-- idée : à force de réfléchir on s'endors, puis réveillé par police -->
+			<button go="fourDoors">Entrer.</button>
+			<button go="think">Réfléchir.</button> <!-- idée : à force de réfléchir on s'endors, puis réveillé par police -->
 		</div>
 
 		<div class="section" id="think">
 			Vous réfléchissez ...
+
 			<button go="think">Continuer à réfléchir.</button>
 			<button go="fourDoors">Entrer</button>
 		</div>
@@ -59,7 +60,7 @@
 		</div>
 		
 		<div class="section" id="passedFence">
-			D'un bond et avec un peu d'escalade vous vous retrouvez à l'intérieur. Arrivé à l'allée.
+			D'un bond et avec un peu d'escalade vous vous retrouvez à l'intérieur.
 			
 			<button go="alley">Remonter l'allée.</button>
 			<button go="garden">Passer par le jardin.</button>
@@ -91,6 +92,7 @@
 			Vous voilà dans la cuisine toute blanche, il ne semble y avoir rien d'intéressant.
 		
 			<button go="hallByKitchen">Sortir.</button>
+
 			<!-- Si alerte<=2 : go emptyKitchen -->
 			<!-- Si alerte>2 : go eatingCat -->
 			<button go="emptyKitchen">Fouiller la pièce.</button>
@@ -98,6 +100,7 @@
 
 		<div class="section" id="emptyKitchen">
 			Vous ne trouvez absolument rien de valeur.
+
 			<button go="hallByKitchen">Sortir.</button>
 		</div>
 
@@ -113,6 +116,7 @@
 
 			<button go="fourDoors">Monter l'escalier.</button>
 			<button go="diningRoom">Passer la porte.</button>
+			<button go="leaveByFrontDoor">S'échapper par l'entrée.</button>
 		</div>
 
 		<div class="section" id="hallByFrontDoor">
@@ -121,10 +125,18 @@
 			<button go="kitchen">Passer la porte de gauche.</button>
 			<button go="fourDoors">Monter l'escalier.</button>
 			<button go="diningRoom">Passer la porte de droite.</button>
+			<button go="babtou">Être pris de panique et fuir.</button>
+		</div>
+
+		<div class="section" id="babtou">
+			Vous êtes un babtou fragile. Rentrez chez vous.
+
+			<button go="intro">Ok ...</button>
 		</div>
 	
 		<div class="section" id="diningRoom">
 			Vous arrivez dans la grande salle à manger, composée d'une grande table centrale et d'une commode.
+
 			<button go="hallByDiningRoom">Sortir.</button>
 			<button go="cutlery">Fouiller la commode.</button>
 		</div>
@@ -132,6 +144,7 @@
 		<div class="section" id="cutlery">
 			Tout les tiroirs sont sans importance sauf celui du milieu que vous avez seulement pu entrouvrir.<br />
 			Vous apercevez pas mal de couverts en argent.
+
 			<button go="hallByDiningRoom">Prendre les courverts et sortir.</button>
 			<!-- si vie>1 go : drawerOnFloor -->			
 			<!-- si vie=1 go : failedDrawer -->			
@@ -144,11 +157,13 @@
 			Vous mettez trop de forces pour l'ouvrir ce qui le sort de la commode.<br /> 
 			Son contenu se répand par terre dans un léger bruit (merci le tapis !).
 			<p>(+1 alerte)</p>
+
 			<button go="hallByDiningRoom">Prendre le tout et sortir.</button>
 		</div>
 
 		<div class="section" id="failedDrawer">
 			Vos blessures vous empêchent de mettre assez de forces pour ouvrir le tiroir en entier.
+
 			<button go="hallByDiningRoom">Sortir.</button>
 		</div>
 
@@ -160,48 +175,64 @@
 		</div>
 		
 		<div class="section" id="fourDoors">
-			<p>Vous faites face à quatre portes dont seulement une n'a pas l'air éclairée de l'intérieur.</p>
+			Vous faites face à quatre portes dont seulement deux n'ont pas l'air éclairées de l'intérieur.
 			
 			<button go="teenageRoom">Ouvrir la porte de gauche avec un poster de tête de mort.</button>
 			<button go="parentRoom">Ouvrir la deuxième porte de gauche non éclairée.</button>
 			<button go="shower">Ouvrir la porte de droite largement éclairée.</button>
 			<button go="stockRoom">Ouvrir la deuxième porte de droite assez usé.</button>
-			<button go="hallByFrontDoor">Descendre l'escalier.</button>
+			<button go="leaveByWindow">Sortir du manoir par la fenêtre.</button>
+			<button go="hallByStairs">Descendre l'escalier.</button>
+		</div>
+
+		<div class="section" id="hallByStairs">
+			AH. La porte d'entrée ! Mais également deux portes ...
+
+			<button go="leaveByFrontDoor">Sortir du manoir comme un lâche.</button>
+			<button go="diningRoom">Ouvrir la porte de gauche.</button>
+			<button go="kitchen">Ouvrir la porte de droite.</button>
+			<button go="fourDoors">Remonter l'escalier.</button>
 		</div>
 		
 		<div class="section" id="stockRoom">
 			C'est une pièce pleine de meubles et autre choses, une pièce de stockage donc.
+
 			<button go="fourDoors">Sortir.</button>
 			<button go="vault">Fouiller la pièce.</button>
 		</div>
 
 		<div class="section" id="vault">
 			La seule chose d'importance est un imposant coffre fort dans le fond de la pièce.
+
 			<button go="fourDoors">Sortir.</button>
 			<button go="failedVault">Forcer l'ouverture.</button>
 
 			<!-- si outils encore présents -->
-			<button go="successVault">Tenter de l'ouvrir avec les outils.</button>
+			<button class="tools" go="successVault">Tenter de l'ouvrir avec les outils.</button>
 		</div>
 
 		<div class="section" id="failedVault">
 			Vous tirez de toutes vos forces mais rien ne bouge. En mettant trop de force vers l'arrière vous lâchez prise et bousculer les meubles derrière vous, une boite vous tombe dessus. Vous sortez de la pièce.
 			<p>(-1 vie, +1 alerte)</p>
+
 			<button go="fourDoors">Sortir.</button>
 		</div>
 
 		<div class="section" id="successVault">
-			Vous parvenez a ouvrir le coffre mais les outils se brisent. A l'intérieur, il y a énormément de billets que vous mettez dans le sac.
+			Vous parvenez à ouvrir le coffre mais les outils se brisent. A l'intérieur, il y a énormément de billets que vous mettez dans le sac.
+
 			<button go="fourDoors">Sortir.</button>
 		</div>
 
 		<div class="section" id="shower">
 			Vous tombez sur une jeune femme sortant de la douche qui crie en vous voyant. Vous vous précipitez vers la sortie pour fuir, laissant votre sac sur place dans la panique. Tout ça pour rien, dommage.
+
 			<button go="intro">Recommencer.</button>
 		</div>
 		
 		<div class="section" id="teenageRoom">
 			C'est une chambre d'ado pleine de posters et bien sale. Le jeune est d'ailleurs dos à vous sur son ordinateur. Une musique extrêmement forte sortant de son casque.
+			
 			<button go="tabletCat">Fouiller la chambre.</button>
 			<!-- Si alerte<2 : go tabletCat -->
 			<!-- Si alerte>=2 : go tablet -->
@@ -220,12 +251,14 @@
 		<div class="section" id="takeTabletCat">
 			Lorsque vous approchez le chat s'excite et vous saute dessus pour vous griffer avant de sortir précipitamment. Heureusement l'ado n'a rien entendu.
 			<p>(-1 vie, +1 alerte)</p>
+
 			<button go="fourDoors">Prendre la tablette et sortir de la chambre.</button>
 		</div>
 		
 		
 		<div class="section" id="tablet">
 			Vous apercevez seulement une tablette sur le lit.
+
 			<button go="takeTablet">Prendre la tablette.</button>
 			<button go="fourDoors">Sortir.</button>
 		</div>
@@ -233,12 +266,14 @@
 
 		<div class="section" id="takeTablet">
 			Vous la récupérez sans difficultés. Vous sortez de la pièce.
+
 			<button go="fourDoors">Sortir.</button>
 		</div>
 
 
 		<div class="section" id="parentRoom">
 			C'est la chambre parentale, une personne dors dans le lit. Vous apercevez un collier onéreux sur une commode près de la porte.
+
 			<button go="searchParentRoom">Trop évident, fouiller la pièce.</button>
 			<button go="takeNecklace">Prendre le collier.</button>
 			<button go="fourDoors">Sortir.</button>
@@ -247,6 +282,7 @@
 
 		<div class="section" id="searchParentRoom">
 			Le reste de la pièce contient une armoire et des tables de chevet des deux cotés du lit.
+
 			<!-- si alert>=3 : go stoppedByHusband-->
 			<!-- si alert<3 : go searchNightstand-->
 			<button go="searchNightstand">Fouiller une table de chevet.</button>
@@ -256,16 +292,19 @@
 
 		<div class="section" id="stoppedByHusband">
 			Le mari dans le lit avait était alerté par vos bruits. Maintenant que vous êtes proche, il vous frappe avec une batte. Vous perdez connaissance et êtes réveillé par la police. Dommage.
+
 			<button go="intro">Meh.</button>
 		</div>
 
 		<div class="section" id="searchNightstand">
 			En ouvrant le tiroir de la table de chevet vous trouvez une chevalière et un stylo à plume en or.
+
 			<button go="searchParentRoom">Continuer à fouiller.</button>
 		</div>
 
 		<div class="section" id="openWardrobe">
 			A l'intérieur vous trouvez une boite à bijoux en métal fermée à clefs.
+
 			<button go="searchParentRoom">Ne rien tenter.</button>
 
 			<!-- si vie=1 : go failedWardrobe-->
@@ -273,34 +312,39 @@
 			<button go="successWardrobe">Forcer l'ouverture.</button>
 
 			<!-- si outils encore présents -->
-			<button go="openedBox">Ouvrir avec les outils.</button>
+			<button class="tools" go="openedBox">Ouvrir avec les outils.</button>
 		</div>
 
 		<div class="section" id="openedBox">
 			Les outils son inutilisable après l'ouverture. Vous trouvez dedans 5 bagues en or.
+
 			<button go="searchParentRoom">Continuer à fouiller.</button>
 			<button go="fourDoors">Sortir.</button>
 		</div>
 		
 		<div class="section" id="failedWardrobe">
 			Vos blessures vous empêchent de mettre assez de forces pour l'ouvrir.
+
 			<button go="searchParentRoom">Continuer à fouiller.</button>
 		</div>
 
 		<div class="section" id="successWardrobe">
 			En y appliquant assez de forces, vous parvenez à l'ouvrir et trouvez 5 bagues en or. Le craquement de l'ouverture émet un bruit.
 			<p>(+1 alerte)</p>
+
 			<button go="searchParentRoom">Continuer à fouiller.</button>
 		</div>
 
 		<div class="section" id="takeNecklace">
 			Vous le récupérez sans difficultés.
+
 			<button go="searchParentRoom">Fouiller le reste de la pièce.</button>
 			<button go="closeDoor">Sortir de la chambre.</button>
 		</div>
 
 		<div class="section" id="closeDoor">
 			Vous refermez la porte derrière vous.
+
 			<button go="leaveByFrontDoor">S'échapper par l'entrée.</button>
 			<button go="leaveByWindow">S'échapper par la fenêtre.</button>
 			<button go="fourDoors">Rester.</button>
@@ -308,12 +352,14 @@
 
 		<div class="section" id="leaveByFrontDoor">
 			Vous sortez du manoir sans aucunes difficultés et vous pourrez vendre vos trouvaille à très bon prix. Bravo.
+
 			<button go="intro">Recommencer.</button>
 		</div>
 
 		<div class="section" id="leaveByWindow">
 			En sortant sur le toit mouillé vous faites un faux pas et vous vous retrouvez en bas au sol. <br />
 			Vous fermez les yeux quelques secondes ...
+
 			<!-- si vie=1 go : arrested -->
 			<!-- si vie>1 go : escaped -->
 			<button go="escaped">Ouvrir les yeux.</button>
