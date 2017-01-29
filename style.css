@@ -1,3 +1,7 @@
+html{
+	height: 100%;
+}
+
 body {
 	font-size : 13pt;
 	font-family : "Trebuchet MS", Arial, sans-serif;
@@ -76,3 +80,13 @@ h2 {
 	background-color: red;
 }
 */
+
+#copyright {
+	position : absolute;
+	bottom: 15px;
+	left: 15px;
+}
+
+a {
+	color : #F5F5F5;
+}
