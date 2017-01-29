@@ -1,7 +1,8 @@
 body {
 	font-size : 13pt;
 	font-family : "Trebuchet MS", Arial, sans-serif;
-	background-color: #0f0f0f;
+	background: url(bg.jpg) no-repeat center center fixed; 
+	background-size: cover;
 	color : #F5F5F5;
 }
 
@@ -22,13 +23,14 @@ h2 {
 #status div {
 	display : inline-block;
 	padding : 10px 20px;
-	color : gray;
 	border-left : 1px solid lightGray;
 	border-right : 1px solid lightGray;
+	background-color: #0F0F0F;
 }
-#status div+div {
+
+/*#status div+div {
 	border-left : none;
-}
+}*/
 
 .section {
 	padding : 10px;
@@ -36,10 +38,13 @@ h2 {
 	margin-top : 100px;
 	max-width : 600px;
 	border : 1px solid lightGray;
+	background-color: rgba(5, 5, 5, 0.8);
 }
+
 .section#intro {
 	display : block;
 }
+
 .section button {
 	display : block;
 	width : 100%;
@@ -51,6 +56,7 @@ h2 {
 	border : none;
 	cursor : pointer;
 }
+
 .section button+button  {
 	margin-top : 10px;
 }
@@ -66,4 +72,7 @@ h2 {
 	box-shadow : 0px 2px 8px gray;
 }
 
-
+/*.red {
+	background-color: red;
+}
+*/

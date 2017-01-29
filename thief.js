@@ -10,13 +10,20 @@ $( function() {
 	buttons.click( function() {
 
 		//CONSEQUENCES OF ALERT
+		if(parseInt(alert.text()) > 1) {
+			$("#teenageRoom > button[go='tabletCat']").attr("go", "tablet");
+		}
+
 		if(parseInt(alert.text()) > 2) {
 			$("#kitchen > button[go='emptyKitchen']").attr("go", "eatingCat");
+			$("#searchParentRoom > button[go='searchNightstand']").attr("go", "stoppedByHusband");
 		}
 
 		//CONSEQUENCES OF LIFE
-		if(parseInt(life.text()) == 1) {
+		if(parseInt(life.text()) <= 1) {
 			$("#cutlery > button[go='drawerOnFloor']").attr("go", "failedDrawer");
+			$("#openWardrobe > button[go='successWardrobe']").attr("go", "failedWardrobe");
+			$("#leaveByWindow > button[go='escaped']").attr("go", "arrested");
 		}
 
 		//TOOLS SYSTEM
@@ -96,19 +103,25 @@ $( function() {
 	}
 	
 	function endGame(key) {
-		//remove buttons of this section
+		//REMOVE BUTTONS OF THIS SECTION
 		$("#" + key + " button").remove();
 
-		if(life.text() == "0")
+		if(life.text() == "0") {
+			// $(".life").toggleClass("red");
 			$("#" + key).append("Vous vous êtes évanouis.<br />Vous êtes à présent au poste de police.");
-		else if(alert.text() == "4")
+		}
+		else if(alert.text() == "4") {
+			// $(".alert").toggleClass("red");
 			$("#" + key).append("La police surgit dans la pièce et vous arrête.");
+		}
 
-		//add restart button
+		//ADD RESTART BUTTON
 		$("#" + key).append("<button go='intro'>Recommencer.</button>");
-		//allows to click on it
+
+		//ADD CLICK EVENT ON THE BUTTON
 		$("#" + key + " button").click(function() {
 			gotoSection($(this).attr("go"));
+			// $("#status > div").toggleClass("red", false);
 		});
 	}
 	
