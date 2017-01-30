@@ -5,6 +5,10 @@ $( function() {
 	var alert = $("#status > .alert > .alertValue");
 	var tools = $("#status > .inventory > .toolsValue");
 
+	//AUDIO
+	var sound = document.getElementById("sound");
+	sound.volume = 0.2;
+
 	gotoSection("intro");
 
 	buttons.click( function() {
@@ -55,6 +59,10 @@ $( function() {
 		{
 			increaseAlert(1);
 		}
+
+		//STEAL ONCE SYSTEM
+		/*if(key == "cutelery")
+			$(this).attr("go", "alreadyTaken");*/
 
 		gotoSection(key);
 

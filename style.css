@@ -90,3 +90,13 @@ h2 {
 a {
 	color : #F5F5F5;
 }
+
+#bottom_right {
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
+}
+
+#bottom_right > p {
+	color: red;
+}
