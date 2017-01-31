@@ -18,14 +18,13 @@ $( function() {
 		//BUTTON KEY
 		key = $(this).attr("go");
 
-		//CURRENT SECTION
+		//CURRENT SECTION KEY
 		currentKey = $(this).parent().attr("id");
 
 		//CONSEQUENCES OF ALERT
 		if(parseInt(alert.text()) > 1) {
 			$("#teenageRoom > button[go='tabletCat']").attr("go", "tablet");
 		}
-
 		if(parseInt(alert.text()) > 2) {
 			$("#kitchen > button[go='emptyKitchen']").attr("go", "eatingCat");
 			$("#searchParentRoom > button[go='searchNightstand']").attr("go", "stoppedByHusband");
@@ -67,7 +66,7 @@ $( function() {
 		gotoSection(key);
 
 		//STEAL ONCE SYSTEM
-		if(key == "takeNecklace" || key == "cutlery" || key == "tabletCat" || key == "tablet" || key == "searchNightstand" || key == "openWardrobe" || key == "vault") {
+		if(key == "takeNecklace" || key == "cutlery" || key == "tabletCat" || key == "tablet" || key == "searchNightstand" || key == "openWardrobe") {
 			if(isAlreadyStolen(key)) {
 				gotoSection("alreadyStolen");
 				$("#alreadyStolen button").remove();
@@ -91,9 +90,8 @@ $( function() {
 		for(var object in objects) {
 			if(key == objects[object])
 				return true;
-			else
-				return false;
 		}
+		return false;
 	}
 
 
