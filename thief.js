@@ -12,6 +12,9 @@ $( function() {
 	var sound = document.getElementById("sound");
 	sound.volume = 0.2;
 
+	//THINK AND SLEEP SYSTEM
+	var think_cpt = 0;
+
 	gotoSection("intro");
 
 	buttons.click( function() {
@@ -47,7 +50,6 @@ $( function() {
 			looseTools(1);
 
 		//LIFE AND ALERT SYSTEM
-
 		if( key == "roof" || key == "window" 
 			|| key == "eatingCat" || key == "failedVault" 
 			|| key == "takeTabletCat")
@@ -64,6 +66,14 @@ $( function() {
 		}
 
 		gotoSection(key);
+
+		//THINK AND SLEEP SYSTEM
+		if(key == "think")
+			think_cpt++;
+		if(think_cpt > 4) {
+			gotoSection("feltAsleep");
+			think_cpt = 0;
+		}
 
 		//STEAL ONCE SYSTEM
 		if(key == "takeNecklace" || key == "cutlery" || key == "tabletCat" || key == "tablet" || key == "searchNightstand" || key == "openWardrobe") {
