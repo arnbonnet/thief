@@ -5,6 +5,9 @@ $( function() {
 	var alert = $("#status > .alert > .alertValue");
 	var tools = $("#status > .inventory > .toolsValue");
 
+	//STEAL ONCE SYSTEM
+	var objects = [];
+
 	//AUDIO
 	var sound = document.getElementById("sound");
 	sound.volume = 0.2;
@@ -12,6 +15,11 @@ $( function() {
 	gotoSection("intro");
 
 	buttons.click( function() {
+		//BUTTON KEY
+		key = $(this).attr("go");
+
+		//CURRENT SECTION
+		currentKey = $(this).parent().attr("id");
 
 		//CONSEQUENCES OF ALERT
 		if(parseInt(alert.text()) > 1) {
@@ -40,7 +48,6 @@ $( function() {
 			looseTools(1);
 
 		//LIFE AND ALERT SYSTEM
-		key = $(this).attr("go");
 
 		if( key == "roof" || key == "window" 
 			|| key == "eatingCat" || key == "failedVault" 
@@ -52,24 +59,42 @@ $( function() {
 		if(key == "roof")
 			increaseAlert(2);
 
-		if(key == "garden" || key == "window" 
-			|| key == "eatingCat" || key == "drawerOnFloor" 
-			|| key == "failedVault" || key == "takeTabletCat" 
-			|| key == "successWardrobe")
+		if(key == "garden" || key == "window")
 		{
 			increaseAlert(1);
 		}
 
-		//STEAL ONCE SYSTEM
-		/*if(key == "cutelery")
-			$(this).attr("go", "alreadyTaken");*/
-
 		gotoSection(key);
+
+		//STEAL ONCE SYSTEM
+		if(key == "takeNecklace" || key == "cutlery" || key == "tabletCat" || key == "tablet" || key == "searchNightstand" || key == "openWardrobe" || key == "vault") {
+			if(isAlreadyStolen(key)) {
+				gotoSection("alreadyStolen");
+				$("#alreadyStolen button").remove();
+				$("#alreadyStolen").append("<button go='"+ currentKey +"'>Retour.</button>");
+				$("#alreadyStolen button").click(function() {
+					gotoSection(currentKey);
+				});
+			}
+			else {
+				objects.push(key);
+				gotoSection(key);
+			}
+		}
 
 		if(life.text() == "0" || alert.text() == "4")
 			endGame(key);
 
 	});
+
+	function isAlreadyStolen(key) {
+		for(var object in objects) {
+			if(key == objects[object])
+				return true;
+			else
+				return false;
+		}
+	}
 
 
 	function gotoSection(key) {
