@@ -141,6 +141,7 @@ $( function() {
 		setLife(3);
 		setAlert(0);
 		setTools(1);
+		objects = [];
 	}
 	
 	function endGame(key) {
